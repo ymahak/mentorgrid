@@ -84,7 +84,7 @@ export default async function HomePage() {
       <WebsiteSchema
         name="Mahak Yadav - Tech Mentor & Trainer"
         description="1:1 and small-batch training in AI/ML, Data Science and Full-Stack Development. Learn by building real projects."
-        url="https://mahakyadav.vercel.app"
+        url="https://mahaky15.vercel.app"
       />
       <EducationalOrganizationSchema />
       

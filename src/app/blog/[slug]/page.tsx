@@ -87,13 +87,13 @@ export default async function ArticlePage({ params }: PageProps) {
         author="Mahak Yadav"
         datePublished={article.createdAt.toISOString()}
         dateModified={article.updatedAt.toISOString()}
-        url={`https://mahakyadav.vercel.app/blog/${article.slug}`}
+        url={`https://mahaky15.vercel.app/blog/${article.slug}`}
       />
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://mahakyadav.vercel.app" },
-          { name: "Blog", url: "https://mahakyadav.vercel.app/blog" },
-          { name: article.title, url: `https://mahakyadav.vercel.app/blog/${article.slug}` },
+          { name: "Home", url: "https://mahaky15.vercel.app" },
+          { name: "Blog", url: "https://mahaky15.vercel.app/blog" },
+          { name: article.title, url: `https://mahaky15.vercel.app/blog/${article.slug}` },
         ]}
       />
       

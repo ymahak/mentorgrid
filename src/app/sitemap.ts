@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 // Generate sitemap dynamically at runtime
 export const dynamic = 'force-dynamic';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mahakyadav.vercel.app";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mahaky15.vercel.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages

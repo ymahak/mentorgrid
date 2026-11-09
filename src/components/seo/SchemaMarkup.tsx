@@ -95,7 +95,7 @@ export function CourseSchema({
     provider: {
       "@type": "Person",
       name: provider,
-      url: "https://mahakyadav.vercel.app/about",
+      url: "https://mahaky15.vercel.app/about",
     },
     url,
     timeRequired: duration,
@@ -144,7 +144,7 @@ export function ArticleSchema({
     author: {
       "@type": "Person",
       name: author,
-      url: "https://mahakyadav.vercel.app/about",
+      url: "https://mahaky15.vercel.app/about",
     },
     datePublished,
     dateModified: dateModified || datePublished,
@@ -155,7 +155,7 @@ export function ArticleSchema({
       name: "Mahak Yadav",
       logo: {
         "@type": "ImageObject",
-        url: "https://mahakyadav.vercel.app/images/mahak-yadav.jpg",
+        url: "https://mahaky15.vercel.app/images/mahak-yadav.jpg",
       },
     },
     mainEntityOfPage: {
@@ -205,8 +205,8 @@ export function EducationalOrganizationSchema() {
     "@type": "EducationalOrganization",
     name: "Mahak Yadav - Tech Training",
     description: "Personalized tech training in AI/ML, Data Science, and Full-Stack Development",
-    url: "https://mahakyadav.vercel.app",
-    logo: "https://mahakyadav.vercel.app/images/mahak-yadav.jpg",
+    url: "https://mahaky15.vercel.app",
+    logo: "https://mahaky15.vercel.app/images/mahak-yadav.jpg",
     founder: {
       "@type": "Person",
       name: "Mahak Yadav",

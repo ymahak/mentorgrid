@@ -61,8 +61,8 @@ export default async function AboutPage() {
         name={mentor?.name || "Mahak Yadav"}
         jobTitle={mentor?.designation || "Tech Mentor & Trainer"}
         description="Program Head, Technical Trainer, and Full-Stack Developer with experience training 400+ students in AI/ML, Data Science, and Full-Stack Development."
-        image="https://mahakyadav.vercel.app/images/mahak-yadav.jpg"
-        url="https://mahakyadav.vercel.app/about"
+        image="https://mahaky15.vercel.app/images/mahak-yadav.jpg"
+        url="https://mahaky15.vercel.app/about"
         sameAs={[
           "https://www.linkedin.com/in/mahak-42675a39b/",
           "https://github.com/ymahak",
@@ -71,8 +71,8 @@ export default async function AboutPage() {
       />
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://mahakyadav.vercel.app" },
-          { name: "About", url: "https://mahakyadav.vercel.app/about" },
+          { name: "Home", url: "https://mahaky15.vercel.app" },
+          { name: "About", url: "https://mahaky15.vercel.app/about" },
         ]}
       />
       

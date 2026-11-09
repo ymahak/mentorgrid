@@ -72,16 +72,16 @@ export default async function CourseDetailPage({ params }: PageProps) {
         name={course.title}
         description={course.description}
         provider="Mahak Yadav"
-        url={`https://mahakyadav.vercel.app/courses/${course.slug}`}
+        url={`https://mahaky15.vercel.app/courses/${course.slug}`}
         duration={course.duration}
         level={course.level}
         topics={course.technologies}
       />
       <BreadcrumbSchema
         items={[
-          { name: "Home", url: "https://mahakyadav.vercel.app" },
-          { name: "Courses", url: "https://mahakyadav.vercel.app/courses" },
-          { name: course.title, url: `https://mahakyadav.vercel.app/courses/${course.slug}` },
+          { name: "Home", url: "https://mahaky15.vercel.app" },
+          { name: "Courses", url: "https://mahaky15.vercel.app/courses" },
+          { name: course.title, url: `https://mahaky15.vercel.app/courses/${course.slug}` },
         ]}
       />
       
