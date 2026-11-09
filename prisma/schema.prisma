@@ -1,0 +1,122 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Course model
+model Course {
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug             String   @unique
+  title            String
+  description      String
+  technologies     String   // JSON array stored as string
+  level            String
+  duration         String
+  overview         String
+  prerequisites    String?
+  whoShouldEnroll  String
+  learningOutcomes String   // JSON array stored as string
+  imageUrl         String?
+  isVisible        Boolean  @default(true)
+  order            Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  modules          Module[]
+}
+
+// Module model (course curriculum)
+model Module {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  courseId    String  @db.ObjectId
+  title       String
+  description String?
+  topics      String  // JSON array stored as string
+  order       Int
+  course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
+
+// Enquiry model (general and corporate)
+model Enquiry {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String
+  email                String
+  phone                String
+  courseInterested     String?
+  education            String?
+  learningGoals        String?
+  message              String
+  type                 String   @default("general") // "general" or "corporate"
+  companyName          String?
+  contactPerson        String?
+  businessEmail        String?
+  participants         String?
+  trainingFormat       String?
+  trainingRequirements String?
+  isRead               Boolean  @default(false)
+  createdAt            DateTime @default(now())
+}
+
+// Article model (blog posts)
+model Article {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  slug        String   @unique
+  title       String
+  excerpt     String
+  content     String
+  category    String
+  readingTime Int
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Testimonial model
+model Testimonial {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  role      String
+  content   String
+  imageUrl  String?
+  isVisible Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+// Mentor Profile model
+model MentorProfile {
+  id               String @id @default(auto()) @map("_id") @db.ObjectId
+  name             String
+  designation      String
+  bio              String
+  skills           String // JSON array stored as string
+  experience       String // JSON array stored as string
+  education        String // JSON array stored as string
+  certifications   String // JSON array stored as string
+  trainingPrograms String // JSON array stored as string
+  imageUrl         String?
+  linkedinUrl      String?
+  githubUrl        String?
+}
+
+// Site Settings model (key-value pairs)
+model SiteSettings {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  key   String @unique
+  value String
+}
+
+// Admin User model
+model AdminUser {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+}
