@@ -9,6 +9,9 @@ import {
 } from "@/components/about/AnimatedSections";
 import { PersonSchema, BreadcrumbSchema } from "@/components/seo/SchemaMarkup";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "About",
   description:

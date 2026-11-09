@@ -17,6 +17,9 @@ import {
 import { prisma } from "@/lib/prisma";
 import { PageHeader } from "@/components/ui/SectionHeading";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Meet Your Mentor",
   description: "Learn from Mahak Yadav - Program Head, Technical Trainer, and Full-Stack Developer with experience training 400+ students.",
