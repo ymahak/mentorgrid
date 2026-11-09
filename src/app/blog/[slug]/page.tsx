@@ -54,16 +54,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export async function generateStaticParams() {
-  const articles = await prisma.article.findMany({
-    where: { isPublished: true },
-    select: { slug: true },
-  });
-
-  return articles.map((article) => ({
-    slug: article.slug,
-  }));
-}
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
 
 const categoryColors: Record<string, string> = {
   "AI & Machine Learning": "#FF6B1A",

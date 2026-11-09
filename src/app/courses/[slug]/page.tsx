@@ -49,16 +49,8 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const courses = await prisma.course.findMany({
-    where: { isVisible: true },
-    select: { slug: true },
-  });
-
-  return courses.map((course) => ({
-    slug: course.slug,
-  }));
-}
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
 
 const outcomeColors = [
   "#FFF6EC",  // Cream (primary light)
