@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Mail, Download, Gift, Sparkles } from "lucide-react";
+import { X, Mail, Download, Gift, Sparkles, Loader2 } from "lucide-react";
 
 export function FreeResourcesPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [hasShown, setHasShown] = useState(false);
 
   useEffect(() => {
@@ -43,13 +45,33 @@ export function FreeResourcesPopup() {
     };
   }, [hasShown]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the email to your backend
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 3000);
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/free-resources", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 5000);
+      } else {
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Failed to send. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const resources = [
@@ -148,15 +170,29 @@ export function FreeResourcesPopup() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
                         required
-                        className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-[#140D08]/10 focus:border-[#FF6B1A] outline-none transition-colors bg-white"
+                        disabled={isLoading}
+                        className="w-full pl-12 pr-4 py-3 rounded-xl border-2 border-[#140D08]/10 focus:border-[#FF6B1A] outline-none transition-colors bg-white disabled:opacity-50"
                       />
                     </div>
+                    {error && (
+                      <p className="text-red-500 text-sm mb-3 text-center">{error}</p>
+                    )}
                     <button
                       type="submit"
-                      className="w-full bg-[#140D08] text-[#FFF6EC] font-bold py-3 px-6 rounded-xl hover:bg-[#22160E] transition-colors flex items-center justify-center gap-2"
+                      disabled={isLoading}
+                      className="w-full bg-[#140D08] text-[#FFF6EC] font-bold py-3 px-6 rounded-xl hover:bg-[#22160E] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                     >
-                      <Download className="w-5 h-5" />
-                      Get Free Resources
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Download className="w-5 h-5" />
+                          Get Free Resources
+                        </>
+                      )}
                     </button>
                   </form>
 
