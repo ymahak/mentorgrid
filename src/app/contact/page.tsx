@@ -5,6 +5,9 @@ import { PageWrapper } from "@/components/layout/PageWrapper";
 import { EnquiryForm } from "@/components/forms";
 import { AnimatedContactElements } from "@/components/contact/AnimatedContactElements";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Contact Us",
   description:

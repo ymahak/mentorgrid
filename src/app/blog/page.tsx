@@ -4,6 +4,9 @@ import { prisma } from "@/lib/prisma";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { BlogContent } from "@/components/blog/BlogContent";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Blog",
   description:

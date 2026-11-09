@@ -6,6 +6,9 @@ import Badge from "@/components/ui/Badge";
 import { Plus, Edit, Eye } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 async function getArticles() {
   return prisma.article.findMany({
     orderBy: { createdAt: "desc" },

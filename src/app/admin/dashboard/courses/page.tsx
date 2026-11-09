@@ -5,6 +5,9 @@ import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import { Plus, Edit, Eye, EyeOff } from "lucide-react";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 async function getCourses() {
   return prisma.course.findMany({
     orderBy: { order: "asc" },

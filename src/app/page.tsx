@@ -14,6 +14,9 @@ import { CodeComparison } from "@/components/home/CodeComparison";
 import { FreeResourcesPopup } from "@/components/home/FreeResourcesPopup";
 import { WebsiteSchema, EducationalOrganizationSchema } from "@/components/seo/SchemaMarkup";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Mahak Yadav | Tech Mentor & Trainer",
   description:

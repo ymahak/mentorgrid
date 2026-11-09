@@ -9,6 +9,9 @@ import {
   AnimatedSectionTitle,
 } from "@/components/courses/AnimatedCoursesPage";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Courses & Programs",
   description:

@@ -2,6 +2,9 @@ import { prisma } from "@/lib/prisma";
 import Card from "@/components/ui/Card";
 import { MessageSquare, BookOpen, FileText, Users } from "lucide-react";
 
+// Use dynamic rendering to avoid build-time database queries
+export const dynamic = 'force-dynamic';
+
 async function getStats() {
   const [enquiriesCount, unreadEnquiries, coursesCount, articlesCount] = await Promise.all([
     prisma.enquiry.count(),
